@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background-color: #F3F1FC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.outer-container {
+    width: 90%;
+    height: 90%;
+    background-color: #FFFFFF;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(194, 194, 194, 0.9);
+    padding: 20px;
+    flex-direction: column;
+}
+
+.navbar-container {
+    width: 100%;
+    background-color: #242A42;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 10px rgba(194, 194, 194, 0.9);
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+    background-color: #242A42;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 80%;
+}
+
+.nav-button i {
+    margin-right: 10px;
+}
+
+.nav-button:hover {
+    background-color: #3a4168;
+}
+
+.content-container {
+    flex: 1;
+    background-color: #F3F1FC;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(194, 194, 194, 0.9);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content {
+    padding: 20px;
+    
+}
+
+.content h1 { 
+    margin-bottom: 20px;
+    color: #242A42;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .outer-container {
+        flex-direction: row;
+    }
+    .navbar-container {
+        width: 20%;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    .navbar {
+        align-items: flex-start;
+    }
+    .content-container {
+        width: 80%;
+    }
+    .nav-button {
+        width: 100%;
+    }
+}

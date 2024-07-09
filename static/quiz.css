@@ -1,0 +1,45 @@
+body {
+    background-color: #F3F1FC;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+.form-group {
+    margin-top: 20px;
+}
+.form-control-file {
+    display: block;
+    margin: 0 auto;
+}
+.btn-primary {
+    background-color: #3a4168;
+    border-color: #3a4168;
+    width: 100%;
+    margin-top: 20px;
+}
+.btn-primary:hover {
+    background-color: #242A42;
+    border-color: #242A42;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+label {
+    font-weight: bold;
+    color: #343a40;
+}
+.custom-file-label::after {
+    content: "Browse";
+}
