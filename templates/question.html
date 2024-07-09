@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Insights</title>
+    <link rel="stylesheet" type="text/css" href="\static\question.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Insights</h1>
+        
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <input type="file" name="files" multiple>
+            <button type="submit">Upload</button>
+        </form>
+
+        <form method="post" action="/question">
+            <input type="text" name="user_question" placeholder="Ask a question about your documents">
+            <button type="submit">Ask</button>
+        </form>
+
+        <div class="chat-history">
+            {{ chat_history_html | safe }}
+        </div>
+    </div>
+</body>
+</html>

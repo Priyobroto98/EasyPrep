@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic Extraction</title>
+</head>
+<body>
+    <h1>Extracted Topics and YouTube Links</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Topic Name</th>
+                <th>YouTube Video Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for topic, link in video_info %}
+            <tr>
+                <td>{{ topic }}</td>
+                <td><a href="{{ link }}" target="_blank">{{ link }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

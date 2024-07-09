@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated MCQs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F1FC;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        .card-body {
+            padding: 20px 30px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 15px;
+        }
+        .form-check-label {
+            font-size: 1rem;
+            color: #495057;
+        }
+        .correct-answer {
+            display: none;
+            color: #28a745;
+            font-size: 0.9rem;
+        }
+        #submit-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 1.25rem;
+            background-color: #3a4168;
+            border-color: #3a4168;
+        }
+        #submit-btn:hover {
+            background-color: #242A42;
+            border-color: #242A42;
+        }
+        #timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #343a40;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Quiz Quest</h1>
+        <div id="timer">05:00</div>
+        <div id="mcqs-container">
+            {% for index, mcq in mcqs %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Q{{ index }}: {{ mcq[0] }}?</h5>
+                        <form>
+                            {% set options = ['A', 'B', 'C', 'D'] %}
+                            {% set num_choices = mcq[1]|length %}
+                            {% for choice_index in range(num_choices) %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answer{{ index }}" id="choice{{ index }}{{ choice_index }}" value="{{ choice_index }}">
+                                    <label class="form-check-label" for="choice{{ index }}{{ choice_index }}">
+                                        {{ options[choice_index] }}: {{ mcq[1][choice_index] }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </form>
+                        <small class="text-muted correct-answer">Correct Answer: {{ mcq[2] }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button id="submit-btn" class="btn btn-success">Submit Test</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Timer function
+        var timer = 300; // 5 minutes in seconds
+        var interval = setInterval(function() {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+            document.getElementById('timer').innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timer--;
+            if (timer < 0) {
+                clearInterval(interval);
+                showAnswers();
+            }
+        }, 1000);
+
+        // Submit button event
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            clearInterval(interval);
+            showAnswers();
+        });
+
+        // Show correct answers function
+        function showAnswers() {
+            var questions = document.querySelectorAll('.card-body');
+            questions.forEach(function(question) {
+                question.querySelector('.correct-answer').style.display = 'block';
+            });
+            document.getElementById('submit-btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
